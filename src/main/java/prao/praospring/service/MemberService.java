@@ -1,5 +1,6 @@
 package prao.praospring.service;
 
+import java.util.List;
 import prao.praospring.domain.Member;
 import prao.praospring.repository.MemberRepository;
 import prao.praospring.repository.MemoryMemberRepository;
@@ -22,5 +23,12 @@ public class MemberService {
                 .ifPresent(m -> {
                     throw new IllegalStateException("이미 존재하는 회원입니다.");
                 });
+    }
+
+    /**
+     * 전체 회원 조회
+     */
+    public List<Member> findMembers() {
+        return memberRepository.findAll();
     }
 }
