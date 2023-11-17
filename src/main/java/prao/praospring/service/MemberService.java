@@ -1,6 +1,7 @@
 package prao.praospring.service;
 
 import java.util.List;
+import java.util.Optional;
 import prao.praospring.domain.Member;
 import prao.praospring.repository.MemberRepository;
 import prao.praospring.repository.MemoryMemberRepository;
@@ -30,5 +31,9 @@ public class MemberService {
      */
     public List<Member> findMembers() {
         return memberRepository.findAll();
+    }
+
+    public Optional<Member> findOne(Long memberId) {
+        return memberRepository.findById(memberId);
     }
 }
