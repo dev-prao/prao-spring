@@ -4,11 +4,14 @@ import java.util.List;
 import java.util.Optional;
 import prao.praospring.domain.Member;
 import prao.praospring.repository.MemberRepository;
-import prao.praospring.repository.MemoryMemberRepository;
 
 public class MemberService {
 
-    private final MemberRepository memberRepository = new MemoryMemberRepository();
+    private final MemberRepository memberRepository;
+
+    public MemberService(final MemberRepository memberRepository) {
+        this.memberRepository = memberRepository;
+    }
 
     /**
      * 회원 가입
