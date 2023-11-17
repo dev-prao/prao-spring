@@ -2,13 +2,17 @@ package prao.praospring.service;
 
 import java.util.List;
 import java.util.Optional;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import prao.praospring.domain.Member;
 import prao.praospring.repository.MemberRepository;
 
+@Service
 public class MemberService {
 
     private final MemberRepository memberRepository;
 
+    @Autowired
     public MemberService(final MemberRepository memberRepository) {
         this.memberRepository = memberRepository;
     }
