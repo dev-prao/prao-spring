@@ -2,9 +2,11 @@ package prao.praospring.service;
 
 import java.util.List;
 import java.util.Optional;
+import org.springframework.transaction.annotation.Transactional;
 import prao.praospring.domain.Member;
 import prao.praospring.repository.MemberRepository;
 
+@Transactional
 public class MemberService {
 
     private final MemberRepository memberRepository;

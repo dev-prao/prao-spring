@@ -1,21 +1,21 @@
 package prao.praospring;
 
-import javax.sql.DataSource;
+import javax.persistence.EntityManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import prao.praospring.repository.JdbcTemplateMemberRepository;
+import prao.praospring.repository.JpaMemberRepository;
 import prao.praospring.repository.MemberRepository;
 import prao.praospring.service.MemberService;
 
 @Configuration
 public class SpringConfig {
 
-    private final DataSource dataSource;
+    private EntityManager em;
 
     @Autowired
-    public SpringConfig(final DataSource dataSource) {
-        this.dataSource = dataSource;
+    public SpringConfig(final EntityManager em) {
+        this.em = em;
     }
 
     @Bean
@@ -27,6 +27,7 @@ public class SpringConfig {
     public MemberRepository memberRepository() {
 //        return new MemoryMemberRepository();
 //        return new JdbcMemberRepository(dataSource);
-        return new JdbcTemplateMemberRepository(dataSource);
+//        return new JdbcTemplateMemberRepository(dataSource);
+        return new JpaMemberRepository(em);
     }
 }
